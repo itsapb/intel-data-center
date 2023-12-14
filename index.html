@@ -1,0 +1,748 @@
+<!-- <link rel="stylesheet" href="styles.css"> -->
+
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    /* Carousel Styles */
+
+    .carousel {
+        height: 100%;
+        width: 1280px;
+        margin-top: 0px;
+        margin-bottom: 40px;
+        overflow-x: hidden;
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+
+    }
+
+    h1 {
+        color: #333
+    }
+
+    .carousel-inner {
+        height: 100%;
+        /* min-width: 400%; */
+        display: flex;
+        transition: all ease .5s;
+    }
+
+    .carousel-item {
+        flex: 1;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .carousel-item h1 {
+        opacity: .5;
+    }
+
+    .carousel-controls .prev {
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-image: url('prev.svg');
+        background-position: center;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        opacity: .5;
+    }
+
+    .carousel-controls .next {
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-image: url('next.svg');
+        background-position: center;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        opacity: .5;
+    }
+
+    .prev:hover,
+    .next:hover {
+        opacity: 1;
+    }
+
+    .carousel-indicators {
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        /* transform: translateX(-50%); */
+        text-align: center;
+    }
+
+    .carousel-indicators span {
+        display: inline-block;
+        background-color: white;
+        width: 30px;
+        height: 4px;
+        border-radius: 2px;
+        opacity: .5;
+        cursor: pointer;
+        margin: 3px;
+    }
+
+    .carousel-indicators span.active {
+        opacity: 1;
+    }
+
+    /* fonts */
+
+    @font-face {
+    font-family: 'TWK Everett';
+    src: url('https://cdn.jsdelivr.net/gh/Plaster-Creative-Communications/maverick-intouch@main/fonts/twkeverett-medium-webfont.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/Plaster-Creative-Communications/maverick-intouch@main/fonts/twkeverett-medium-webfont.woff') format('woff');
+    font-weight: medium;
+    font-style: medium;
+
+}
+
+
+@font-face {
+    font-family: 'TWK Everett';
+    src: url('https://cdn.jsdelivr.net/gh/Plaster-Creative-Communications/maverick-intouch@main/fonts/twkeverett-bold-webfont.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/Plaster-Creative-Communications/maverick-intouch@main/fonts/twkeverett-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: bold;
+
+}
+
+
+@font-face {
+    font-family: 'TWK Everett';
+    src: url('https://cdn.jsdelivr.net/gh/Plaster-Creative-Communications/maverick-intouch@main/fonts/twkeverett-regular-webfont.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/Plaster-Creative-Communications/maverick-intouch@main/fonts/twkeverett-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+    /* Two Card Styles */
+
+    .two-card-container {
+        display: flex !important;
+        justify-content: space-evenly !important;
+        width: 1120px !important;
+        padding: 10px 10px 20px 10px !important;
+    }
+
+    .two-card {
+        width: 500px !important;
+    }
+
+    .two-card-img {
+        width: 500px !important;
+        /* height: 300px !important; */
+    }
+
+    .two-card-title {
+        color: #005A5A !important;
+        font-size: 28px !important;
+        line-height: 32px !important;
+        font-weight: bold !important;
+        padding: 20px 10px 10px 10px !important;
+        font-family: 'TWK Everett' !important;
+    }
+
+    .two-card-text {
+        color: #005A5A !important;
+        font-size: 16px !important;
+        line-height: 22px !important;
+        font-weight: 400 !important;
+        padding-top: 10px !important;
+        font-family: 'TWK Everett' !important;
+    }
+
+    .two-card-text-bold {
+        color: #005A5A !important;
+        font-size: 16px !important;
+        line-height: 22px !important;
+        font-weight: 700 !important;
+        padding: 10px !important;
+        font-family: 'TWK Everett' !important;
+    }
+
+    .two-card-sub-title {
+        color: #005A5A !important;
+        font-size: 16px !important;
+        line-height: 22px !important;
+        font-weight: 700 !important;
+        padding-left: 10px !important;
+        font-family: 'TWK Everett' !important;
+    }
+
+    .two-card-cta-link:link,
+    .two-card-cta-link:visited,
+    .two-card-cta-link:hover,
+    .two-card-cta-link:active {
+        color: #005A5A !important;
+    }
+
+
+
+
+    /* Events List Styles */
+
+    .flex-wrapper {
+        padding: 20px 2px 2px 2px;
+        display: flex;
+        justify-content: center;
+        margin-inline: auto;
+        max-width: 1300px;
+    }
+
+    .flex-wrapper:nth-child(1) {
+        padding: 0px !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .events-card-container {
+        width: 1120px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-direction: column !important;
+        height: auto !important;
+        padding-bottom: 10px;
+    }
+
+
+    .events-card-heading-wrapper {
+        height: 75px !important;
+        width: 1120px;
+        text-align: left;
+        background-color: #005A5A !important;
+        color: #fff !important;
+        font-size: 48px !important;
+        align-items: center !important;
+        display: flex !important;
+
+    }
+
+    .events-card-heading {
+
+        font-weight: bold !important;
+        padding-left: 20px !important;
+        color: #fff !important;
+        font-size: 32px !important;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .padding-left-20 {
+        padding-left: 20px !important;
+    }
+
+    .events-card-row {
+        width: 1120px !important;
+        background-color: #005A5A !important;
+        font-size: 16px !important;
+        color: red !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        height: 50px !important;
+        margin-top: 1px !important;
+    }
+
+    .events-card-row:hover {
+        background-color: #008d8d !important;
+    }
+
+    .events-card-date-wrapper {
+        padding-left: 20px !important;
+        display: flex !important;
+        width: 280px !important;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .events-card-date {
+        font-size: 16px !important;
+        text-align: left !important;
+        font-weight: bold !important;
+        padding-left: 10px !important;
+        color: #fff !important;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .events-card-location {
+        width: 280px !important;
+        text-align: left !important;
+        font-weight: bold !important;
+        color: #fff !important;
+        font-size: 16px !important;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .events-card-time {
+        width: 280px !important;
+        font-size: 16px !important;
+        text-align: right !important;
+        font-weight: bold !important;
+        padding-right: 20px !important;
+        color: #fff !important;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .section-heading-wrapper {
+        width: 1120px !important;
+    }
+
+    .section-heading {
+        font-weight: bold !important;
+        padding-left: 42px !important;
+        color: #005A5A !important;
+        font-size: 52px !important;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    ul li {
+        color: #005A5A !important;
+        font-size: 16px !important;
+        line-height: 22px !important;
+        font-weight: 400 !important;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        list-style-type: disc !important;
+        list-style-position: inside !important;
+        padding: 0px 0 10px 30px !important;
+        text-indent: -1.4em !important;
+    }
+
+    .full-width-img {
+        width: 100% !important;
+        height: auto !important;
+        padding: 40px 0px;
+    }
+
+
+  /* /left-aligned image & text       */
+   
+  .width-100 {
+            width: 100%;
+        } 
+        
+ .flex-col-2 {
+            width: 550px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+        }
+
+.intel-flex {
+    display:flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+.padding-top-30px {
+    padding-top: 30px;
+}
+
+.padding-left-30px {
+    padding-left: 30px;
+}
+
+.flex-col-1 {
+    width: 550px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    /* flex-direction: column; */
+}
+
+.divider-40 {
+    padding: 40px;
+}
+
+.divider-20 {
+    padding: 20px;
+}
+
+.divider-10 {
+    padding: 10px;
+}
+
+.remove-link-styling {
+    text-decoration: none;
+    color: white;
+}
+
+
+/* button */
+
+.DCAI-button-green {
+  
+  background-color: #005A5A;
+  border: none;
+  color: white;
+  padding: 10px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* image resize in carousel*/
+
+.img-carousel-w {
+    width: 1106px;
+    height: 1113px;
+}
+
+
+</style>
+
+<div style="color: black; font-family: Arial; font-size: 13px;">
+
+    <!-- Carousel Section -->
+    <div class="flex-wrapper">
+        <div class="carousel">
+            <div class="carousel-inner">
+                <a href="https://eu.tdsynnex.com/gcc/intelxeon" target="_blank"><img src="https://eu.techdata.com/Nuploads/Country/COM/Images/EU_Website/banner-1.png" class="carousel-item" alt="" width="100%" height="auto"></a>
+                <a href="https://eu.tdsynnex.com/gcc/intelxeon"><img src="https://eu.techdata.com/Nuploads/Country/COM/Images/EU_Website/banner-2.png" class="carousel-item" alt="" width="100%" height="auto"></a>
+                <a href="https://eu.tdsynnex.com/gcc/intelxeon"><img src="https://eu.techdata.com/Nuploads/Country/COM/Images/EU_Website/banner-3.png" class="carousel-item" alt="" width="100%" height="auto"></a>
+                <a href=""><img src="https://eu.techdata.com/Nuploads/Country/COM/Images/EU_Website/banner-4.png" class="carousel-item" alt="" width="100%" height="auto"></a>
+                <a href=""><img src="https://eu.techdata.com/Nuploads/Country/COM/Images/EU_Website/data-center-resize.png" class="carousel-item" alt="" width="100%" height="auto"></a>
+
+            </div>
+            <div class="carousel-controls">
+                <span class="prev"></span>
+                <span class="next"></span>
+            </div>
+            <div class="carousel-indicators"></div>
+        </div>
+    </div>
+    <!-- End of carousel -->
+
+
+
+
+    <!-- Left align image section -->
+
+    <div class="flex-wrapper">
+        <div class="section-heading-wrapper">
+            <h2 class="section-heading">Product Spotlight</h2>
+        </div>
+    </div>
+
+    <div class=" padding-top-30px flex-wrapper ">
+        <div class="flex-col-1">
+            <img class="two-card-img width-100" src="https://eu.techdata.com/Nuploads/Country/COM/Images/EU_Website/5th-Gen-Intel.png" alt="">
+        </div>
+        <div class=" flex-col-2 padding-left-30px">
+            <h1 class="two-card-title">Xeon 5th Gen
+            <p class="two-card-text">
+                <ul>
+                    <li>Enhanced Performance: Enjoy up to 17% greater general-purpose performance per watt compared to the 4th Gen.</li>
+                    <li>Advanced Capabilities: With support for up to 64 cores per CPU and up to 3x more last-level cache, these processors are set to exceed expectations.</li>
+                    <li>AI Performance: Experience up to 1.48x better performance in Natural Language Processing and up to 1.32x in Speech Recognition training.</li>
+                    <li>Technological Innovations: Features like increased inter-socket bandwidth with Intel UPI 2.0 and support for CXL Type 3 workflows mark a new era in processor technology.</li>
+                    <li>Software Optimizations: Enhanced performance in cloud-native apps and various workloads.</li>
+                </ul>
+            </p>
+        </h1></div>
+    </div>
+    
+    
+    <div class=" padding-top-30px flex-wrapper ">
+        <div class="flex-col-1">
+            <img class="two-card-img width-100" src="https://eu.techdata.com/Nuploads/Country/COM/Images/EU_Website/Xeon-E-2400.png" alt="">
+        </div>
+        <div class=" flex-col-2 padding-left-30px">
+            <h1 class="two-card-title">E-2400 Processors
+            <p class="two-card-text">
+                <ul>
+                    <li>SMB Server Optimization: The E-2400 is designed for small-scale servers, offering the right mix of performance and efficiency for SMB needs.</li>
+                    <li>Multi-Core Efficiency: With up to 8 cores, it's built to handle multiple tasks seamlessly, ideal for SMBs that require robust multitasking capabilities.</li>
+                    <li>Energy-Smart Technology: Lower power consumption means cost savings for your clients, a key selling point for budget-conscious SMBs.</li>
+                    <li>Advanced Security Features: Enhanced security ensures safe operations for SMBs, an essential aspect in today's digital landscape.</li>
+                    <li>Cost-Effective Solution: Offer your clients a high-value product that balances performance and affordability, perfect for SMB budgets.</li>
+                </ul>
+            </p>
+        </h1></div>
+    </div>
+  
+<!-- end of left align image -->
+
+
+    <!-- Latest News Section -->
+
+    <div class="flex-wrapper">
+        <div class="section-heading-wrapper">
+            <h2 class="section-heading">News</h2>
+        </div>
+    </div>
+
+<!-- full width image-->
+
+<div class="flex-wrapper">
+    <a href="https://eu.tdsynnex.com/selecta-gcc" target="_blank"><img src="https://eu.techdata.com/Nuploads/Country/COM/Images/EU_Website/selecta-linkedin.png" class="full-width-img" alt=""></a>
+</div>
+
+
+<div class="divider-20"></div>
+<!-- end of left align image -->
+
+
+    <div class="flex-wrapper ">
+        <div class="events-card-container">
+            <!-- <div class="events-card-heading-wrapper">
+                <div class="events-card-heading"> </div>
+            </div> -->
+            <div class="events-card-row">
+                <div class="events-card-date-wrapper">
+                    <img class="pl-12" src="https://eu.techdata.com/Nuploads/Country/COM/Images/EU_Website/icons8-calendar-24.png" alt="">
+                    <div class="events-card-date">
+                        5th February 2024
+                    </div>
+                </div>
+                <div class="events-card-location">
+                   TBC</div>
+                <div class="events-card-location">
+                  <a href="#" class="remove-link-styling"> Xeon Gen 5 Shipping</a></div>
+                <div class="events-card-time">
+                    TBC
+                </div>
+            </div>
+            <div class="events-card-row">
+                <div class="events-card-date-wrapper">
+                    <img class="pl-12" src="https://eu.techdata.com/Nuploads/Country/COM/Images/EU_Website/icons8-calendar-24.png" alt="">
+                    <div class="events-card-date">18th-21st March 2024
+                    </div>
+                </div>
+                <div class="events-card-location">
+                    TBC</div>
+                <div class="events-card-location">
+                  <a href="https://www.intel.com/content/www/us/en/newsroom/news/intel-unveils-future-generation-xeon.html#gs.5g747a" class="remove-link-styling"> CloudFest</a></div>
+                <div class="events-card-time">
+                    TBC
+                </div>
+            </div>
+            <div class="events-card-row">
+                <div class="events-card-date-wrapper">
+                    <img class="pl-12" src="https://eu.techdata.com/Nuploads/Country/COM/Images/EU_Website/icons8-calendar-24.png " alt="">
+                    <div class="events-card-date">
+                        April 2024
+                    </div>
+                </div>
+                <div class="events-card-location">
+                    TBC</div>
+                <div class="events-card-location">
+                    Xeon Gen 2 EOL </div>
+                <div class="events-card-time">
+                    TBC
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="divider-40"></div>
+
+</div>
+
+
+
+
+<!-- End of two card section -->
+
+<!-- Carousel Script -->
+<script>
+
+
+    let carousel = document.querySelector('.carousel');
+
+    let carouselInner = document.querySelector('.carousel-inner');
+
+    let prev = document.querySelector('.carousel-controls .prev');
+
+    let next = document.querySelector('.carousel-controls .next');
+
+    let slides = document.querySelectorAll('.carousel-inner .carousel-item');
+
+    let totalSlides = slides.length;
+    console.log(totalSlides)
+
+    let step = 100 / totalSlides;
+
+    let activeSlide = 0;
+
+    let activeIndicator = 0;
+
+    let direction = -1;
+
+    let jump = 1;
+
+    let interval = 3000;
+
+    let time;
+
+
+
+    //Init carousel
+    carouselInner.style.minWidth = (totalSlides * 100) + '%';
+    loadIndicators();
+    loop(true);
+
+
+    //Carousel events
+
+    next.addEventListener('click', () => {
+        slideToNext();
+    });
+
+    prev.addEventListener('click', () => {
+        slideToPrev();
+    });
+
+    carouselInner.addEventListener('transitionend', () => {
+        if (direction === -1) {
+            if (jump > 1) {
+                for (let i = 0; i < jump; i++) {
+                    activeSlide++;
+                    carouselInner.append(carouselInner.firstElementChild);
+                }
+            } else {
+                activeSlide++;
+                carouselInner.append(carouselInner.firstElementChild);
+            }
+        } else if (direction === 1) {
+            if (jump > 1) {
+                for (let i = 0; i < jump; i++) {
+                    activeSlide--;
+                    carouselInner.prepend(carouselInner.lastElementChild);
+                }
+            } else {
+                activeSlide--;
+                carouselInner.prepend(carouselInner.lastElementChild);
+            }
+        };
+
+        carouselInner.style.transition = 'none';
+        carouselInner.style.transform = 'translateX(0%)';
+        setTimeout(() => {
+            jump = 1;
+            carouselInner.style.transition = 'all ease .5s';
+        });
+        updateIndicators();
+    });
+
+    document.querySelectorAll('.carousel-indicators span').forEach(item => {
+        item.addEventListener('click', (e) => {
+            let slideTo = parseInt(e.target.dataset.slideTo);
+
+            let indicators = document.querySelectorAll('.carousel-indicators span');
+
+            indicators.forEach((item, index) => {
+                if (item.classList.contains('active')) {
+                    activeIndicator = index
+                }
+            })
+
+            if (slideTo - activeIndicator > 1) {
+                jump = slideTo - activeIndicator;
+                step = jump * step;
+                slideToNext();
+            } else if (slideTo - activeIndicator === 1) {
+                slideToNext();
+            } else if (slideTo - activeIndicator < 0) {
+
+                if (Math.abs(slideTo - activeIndicator) > 1) {
+                    jump = Math.abs(slideTo - activeIndicator);
+                    step = jump * step;
+                    slideToPrev();
+                }
+                slideToPrev();
+            }
+            step = 100 / totalSlides;
+        })
+    });
+
+    carousel.addEventListener('mouseover', () => {
+        loop(false);
+    })
+
+    carousel.addEventListener('mouseout', () => {
+        loop(true);
+    })
+
+    //Carousel functions
+
+    function loadIndicators() {
+        slides.forEach((slide, index) => {
+            if (index === 0) {
+                document.querySelector('.carousel-indicators').innerHTML +=
+                    `<span data-slide-to="${index}" class="active"></span>`;
+            } else {
+                document.querySelector('.carousel-indicators').innerHTML +=
+                    `<span data-slide-to="${index}"></span>`;
+            }
+        });
+    };
+
+    function updateIndicators() {
+        if (activeSlide > (totalSlides - 1)) {
+            activeSlide = 0;
+        } else if (activeSlide < 0) {
+            activeSlide = (totalSlides - 1);
+        }
+        document.querySelector('.carousel-indicators span.active').classList.remove('active');
+        document.querySelectorAll('.carousel-indicators span')[activeSlide].classList.add('active');
+    };
+
+    function slideToNext() {
+        if (direction === 1) {
+            direction = -1;
+            carouselInner.prepend(carouselInner.lastElementChild);
+        };
+
+        carousel.style.justifyContent = 'flex-start';
+        carouselInner.style.transform = `translateX(-${step}%)`;
+    };
+
+    function slideToPrev() {
+        if (direction === -1) {
+            direction = 1;
+            carouselInner.append(carouselInner.firstElementChild);
+        };
+        carousel.style.justifyContent = 'flex-end'
+        carouselInner.style.transform = `translateX(${step}%)`;
+    };
+
+    function loop(status) {
+        if (status === true) {
+            time = setInterval(() => {
+                slideToNext();
+            }, interval);
+        } else {
+            clearInterval(time);
+        }
+    }
+
+
+
+
+
+</script>
